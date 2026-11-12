@@ -1,0 +1,22 @@
+flowchart TD
+  CRON([Daily cron 01:17 UTC / manual]) --> DETECT
+  subgraph DETECT[Job 1 - detect.py]
+    A1[Maven Central:<br/>latest stable patch per line] --> D{Anything changed<br/>vs labels on published image?}
+    A2[Base image digest] --> D
+    A3[JDK image digest] --> D
+    A4[Trivy scan of published image<br/>fixable vulns only] --> D
+  end
+  D -- no --> SKIP([Skip - no new image])
+  D -- yes: matrix of lines --> BUILD
+  subgraph BUILD[Job 2 - build, one per Tomcat line]
+    B1[Download source tarball<br/>verify SHA512 + PGP] --> B2[ant deploy] --> B3[Harden dist]
+    B4[jlink minimal JRE] --> B5
+    B3 --> B5[Assemble on distroless base<br/>non-root, no shell]
+    B5 --> B6[Smoke test] --> B7[Trivy scan -> labels]
+    B7 --> B8[Push multi-arch<br/>immutable timestamp tag]
+    B8 --> B9[cosign sign + SBOM + vuln attestations]
+    B9 --> B10[Promote tags 10.1.x and 10.1]
+    B7 --> B11[Open issue if fixable HIGH/CRIT remain]
+  end
+  B10 --> REG[(GHCR registry)]
+  REG -. labels = state for tomorrow .-> DETECT

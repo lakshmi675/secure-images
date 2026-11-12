@@ -1,0 +1,46 @@
+# One directory per image. Adding software = adding a directory like this one.
+name: tomcat
+title: Apache Tomcat
+category: apps
+summary: Servlet container built from verified upstream source, with a trimmed JRE and no shell.
+license: Apache-2.0
+homepage: https://tomcat.apache.org
+description: >
+  Run Java web applications (WAR files) on Tomcat compiled from the official source release.
+  The image has no shell or package manager, runs as a non-root user, listens on 8080,
+  has no AJP connector or shutdown port, and logs to stdout.
+upstream: { type: maven, group: org.apache.tomcat, artifact: tomcat }
+platforms: linux/amd64,linux/arm64
+# Inputs pinned by digest on every run. A digest change triggers a rebuild.
+pins:
+  BASE_IMAGE: gcr.io/distroless/java-base-debian12:nonroot
+  JDK_IMAGE: eclipse-temurin:{jdk}-jdk          # jlink source only
+build_args:
+  TOMCAT_VERSION: "{version}"
+  TOMCAT_MAJOR: "{major}"
+  JRE_MODULES: >-
+    java.base,java.logging,java.naming,java.management,java.xml,java.sql,java.desktop,
+    java.instrument,java.rmi,java.security.jgss,java.security.sasl,jdk.unsupported,
+    jdk.crypto.ec,jdk.management,jdk.management.agent,jdk.zipfs,jdk.localedata
+# Public image we compare against in the site's security section.
+baseline: "tomcat:{version}-jdk{jdk}-temurin"
+runtime:
+  user: "65532 (nonroot)"
+  port: "8080/TCP"
+  webapps: /opt/tomcat/webapps
+  shell: "none"
+quickstart: >-
+  docker run --rm -p 8080:8080 -v "$PWD/myapp:/opt/tomcat/webapps/ROOT:ro" {ref}
+notes:
+  - Listens on 8080 (not 80) so it can run as non-root.
+  - There is no shell, so there is no `docker exec ... sh`. Mount your app read-only and read logs with `docker logs`.
+  - The shutdown port is disabled. Stop the container with SIGTERM (`docker stop`).
+  - Access logs and application logs go to stdout.
+# Version lines are discovered from upstream every day. A new stable line (e.g. 11.1, 12.0)
+# gets its own image automatically; list a line under `exclude` to retire it.
+lines:
+  discover: true
+  min: "9.0"
+  exclude: ["10.0"]
+  jdk: { "9.0": "17" }      # JDK used for jlink, per line
+  default_jdk: "21"         # everything else

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sealed Images</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='2' y='2' width='12' height='12' rx='3' fill='%230B7A62'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F3F5F2;--sf:#fff;--ink:#14202A;--mu:#5B6975;--ln:#D9DFDA;--ok:#0B7A62;--okbg:#DDF1EA;--wn:#A8520A;--wnbg:#FBEBDD;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F171C;--sf:#16222A;--ink:#E8EEF1;--mu:#8FA0AB;--ln:#25343E;--ok:#4CC9A6;--okbg:#14332B;--wn:#F0A25C;--wnbg:#3A2714;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F171C;--sf:#16222A;--ink:#E8EEF1;--mu:#8FA0AB;--ln:#25343E;--ok:#4CC9A6;--okbg:#14332B;--wn:#F0A25C;--wnbg:#3A2714;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 'Schibsted Grotesk',system-ui,sans-serif}
+.w{max-width:960px;margin:0 auto;padding:0 20px 64px}
+a{color:inherit}code,.cmd{font:400 13.5px 'JetBrains Mono',ui-monospace,monospace}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--ln)}
+.brand{font-weight:700;letter-spacing:-.01em;text-decoration:none;display:flex;gap:9px;align-items:center}
+.brand:before{content:"";width:13px;height:13px;border-radius:3px;background:var(--ok)}
+header a.m{color:var(--mu);font-size:14px}
+.demo{background:var(--wnbg);color:var(--wn);padding:8px 20px;font-size:14px;text-align:center}
+h1{font-size:clamp(30px,5.4vw,48px);line-height:1.06;letter-spacing:-.028em;font-weight:700;max-width:19ch;margin:52px 0 14px}
+h2{font-size:21px;letter-spacing:-.01em;margin:48px 0 12px;font-weight:700}
+.lead{color:var(--mu);max-width:58ch;margin:0 0 28px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+input,select{font:inherit;color:var(--ink);background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:9px 12px}
+input{flex:1;min-width:200px}
+:focus-visible{outline:2px solid var(--ok);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:6px 20px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--ln);text-decoration:none}
+.row:hover{background:var(--sf)}.row b{font-size:18px;font-weight:500}.row small{display:block;color:var(--mu);font-size:14px}
+.pill{font-size:13px;padding:2px 9px;border-radius:99px;background:var(--ln);color:var(--mu);white-space:nowrap}
+.pill.ok{background:var(--okbg);color:var(--ok)}.pill.wn{background:var(--wnbg);color:var(--wn)}
+.mu{color:var(--mu);font-size:14px}
+.pull{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:20px 0 8px}
+.cmd{flex:1;min-width:240px;background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:10px 14px;overflow-x:auto;white-space:pre;margin:0}
+button{font:500 14px inherit;font-family:inherit;color:var(--bg);background:var(--ink);border:0;border-radius:6px;padding:10px 16px;cursor:pointer}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{text-align:left;font-weight:500;color:var(--mu)}td,th{padding:9px 14px 9px 0;border-bottom:1px solid var(--ln);white-space:nowrap}
+ul{padding-left:20px;max-width:68ch}li{margin:5px 0}
+.bar{display:grid;grid-template-columns:74px 1fr 44px;gap:10px;align-items:center;margin:5px 0}
+.bar i{display:block;height:10px;border-radius:2px;background:var(--ok);min-width:2px}.bar.u i{background:var(--wn)}
+.bar span:last-child{text-align:right;font-variant-numeric:tabular-nums;font-size:14px}
+.key{display:flex;gap:18px;font-size:14px;color:var(--mu);margin:0 0 10px}
+details{border-bottom:1px solid var(--ln);padding:11px 0}summary{cursor:pointer;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+details ul{font-size:14px;margin:8px 0 0}
+@media(max-width:640px){.row{grid-template-columns:1fr}.bar{grid-template-columns:60px 1fr 36px}}
+</style>
+</head>
+<body>
+<div id="demo" class="demo" hidden>Demo data for previewing the layout. Real numbers appear after the first pipeline run.</div>
+<div class="w">
+<header><a class="brand" href="#" id="brand"></a><a class="m" href="catalog.json">catalog.json</a></header>
+<main id="app"></main>
+</div>
+<script type="application/json" id="d">/*DATA*/</script>
+<script>
+const C=JSON.parse(document.getElementById('d').textContent),A=document.getElementById('app'),owner=C.registry.split('/').pop();
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const code=s=>esc(s).replace(/`([^`]+)`/g,'<code>$1</code>');
+const ago=t=>{const m=(Date.now()-Date.parse(t))/6e4;return m<60?Math.max(1,Math.round(m))+' min ago':m<1440?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago'};
+const SEV=['critical','high','medium','low'];
+let q='',cat='',line='';
+document.title=C.title;document.getElementById('brand').textContent=C.title;
+if(C.demo)document.getElementById('demo').hidden=false;
+function status(img){const b=img.lines.map(l=>l.builds[0]).filter(Boolean);if(!b.length)return'<span class="pill">no build yet</span>';
+const f=b.reduce((n,x)=>n+(x.vulns?x.vulns.fixable:0),0);return f?`<span class="pill wn">${f} fixable CVE${f>1?'s':''}</span>`:'<span class="pill ok">0 fixable CVEs</span>'}
+function home(){line='';A.innerHTML=`<h1>Container images rebuilt from source, every day.</h1>
+<p class="lead">Each image is built from the upstream release, checked daily for new versions and fixable vulnerabilities, and published signed with an SBOM. Pull by digest or by tag.</p>
+<div class="tools"><input id="q" type="search" placeholder="Search images" aria-label="Search images" value="${esc(q)}">
+<select id="cat" aria-label="Category"><option value="">All categories</option>${[...new Set(C.images.map(i=>i.category))].map(c=>`<option ${c==cat?'selected':''}>${esc(c)}</option>`).join('')}</select></div><div id="list"></div>`;
+const list=()=>{const r=C.images.filter(i=>(!cat||i.category==cat)&&(i.name+i.title+i.summary).toLowerCase().includes(q.toLowerCase()));
+document.getElementById('list').innerHTML=r.length?r.map(i=>{const t=i.lines.map(l=>l.builds[0]).filter(Boolean).sort((a,b)=>b.built_at.localeCompare(a.built_at))[0];
+return`<a class="row" href="#${esc(i.name)}"><span><b>${esc(i.title)}</b><small>${esc(i.summary)}</small></span><span class="mu">${i.lines.map(l=>esc(l.id)).join(' · ')}${t?' · built '+ago(t.built_at):''}</span>${status(i)}</a>`}).join(''):'<p class="mu">No images match. Clear the search or pick another category.</p>'};
+list();document.getElementById('q').oninput=e=>{q=e.target.value;list()};document.getElementById('cat').onchange=e=>{cat=e.target.value;list()}}
+function img(name){const i=C.images.find(x=>x.name==name);if(!i)return home();
+if(!i.lines.some(l=>l.id==line))line=(i.lines.find(l=>l.builds.length)||i.lines[0]).id;
+const L=i.lines.find(l=>l.id==line),b=L.builds[0],ref=`${C.registry}/${i.name}:${line}`,flags=`--certificate-identity-regexp 'https://github.com/${owner}/.+' --certificate-oidc-issuer https://token.actions.githubusercontent.com`;
+const R={user:'User',port:'Port',webapps:'App directory',shell:'Shell'};
+const v=b&&b.vulns,bl=b&&b.baseline,mx=Math.max(1,...SEV.map(s=>Math.max(v?v[s]:0,bl&&bl.vulns?bl.vulns[s]:0)));
+const bar=(s,n,u)=>`<div class="bar${u?' u':''}"><span class="mu">${u?'':s}</span><i style="width:${n/mx*100}%"></i><span>${n}</span></div>`;
+A.innerHTML=`<p style="margin:28px 0 0"><a href="#" class="mu">All images</a></p><h1 style="margin-top:14px">${esc(i.title)}</h1>
+<p class="lead">${esc(i.description)} <span class="mu">${esc(i.license)} · <a href="${esc(i.homepage)}">upstream</a></span></p>
+<div class="pull"><select id="ln" aria-label="Version line">${i.lines.map(l=>`<option value="${esc(l.id)}" ${l.id==line?'selected':''}>${esc(i.name)} ${esc(l.id)}</option>`).join('')}</select>
+<pre class="cmd" id="pc">docker pull ${esc(ref)}</pre><button id="cp">Copy</button></div>
+<p class="mu">${b?`Latest build ${ago(b.built_at)}: ${esc(i.name)} ${esc(b.version)}, tag <code>${esc(b.tag)}</code>`:'No build published for this line yet. The next daily run will publish it.'}</p>
+<h2>Run it</h2><pre class="cmd" style="margin-bottom:14px">${esc((i.quickstart||'').replace('{ref}',ref))}</pre><ul>${(i.notes||[]).map(n=>`<li>${code(n)}</li>`).join('')}</ul>
+<div class="tw"><table>${Object.entries(i.runtime||{}).map(([k,x])=>`<tr><th>${R[k]||esc(k)}</th><td>${esc(x)}</td></tr>`).join('')}</table></div>
+<h2>Versions</h2><div class="tw"><table><tr><th>Line</th><th>Version</th><th>Runtime</th><th>Built</th><th>Digest</th></tr>${i.lines.map(l=>{const x=l.builds[0];return`<tr><td>${esc(l.id)}</td><td>${x?esc(x.version):'-'}</td><td>${esc(l.runtime)}</td><td>${x?ago(x.built_at):'-'}</td><td><code>${x?esc(x.digest.slice(0,19)):'-'}</code></td></tr>`}).join('')}</table></div>
+<h2>Security</h2>${v?`<p class="lead" style="margin-bottom:14px">Unique CVE IDs found by Trivy at build time for ${esc(i.name)} ${esc(line)}. ${v.fixable?v.fixable+' have a fix available upstream and will trigger a rebuild.':'None have a fix available, so there is nothing to patch yet.'}</p>
+<div class="key"><span style="color:var(--ok)">■ this image</span>${bl?`<span style="color:var(--wn)">■ ${esc(bl.ref)}</span>`:''}</div>
+${SEV.map(s=>bar(s,v[s],0)+(bl&&bl.vulns?bar(s,bl.vulns[s],1):'')).join('<div style="height:8px"></div>')}
+<p class="mu" style="margin-top:14px">${b.size_mb} MB${bl?` vs ${bl.size_mb} MB`:''} · ${b.packages} components in the SBOM</p>`:'<p class="mu">Scan results appear after the first build.</p>'}
+<h2>Changelog</h2>${L.builds.length?L.builds.map(x=>{const c=x.changes,n=c?c.added.length+c.removed.length+c.updated.length:0;
+return`<details><summary><code>${esc(x.tag)}</code><span class="mu">${ago(x.built_at)}</span>${x.reasons.map(r=>`<span class="pill">${esc(r)}</span>`).join('')}</summary>
+${!c?'<p class="mu">First build of this line.</p>':n?`<ul>${c.updated.map(t=>`<li>updated ${esc(t)}</li>`).concat(c.added.map(t=>`<li>added ${esc(t)}</li>`),c.removed.map(t=>`<li>removed ${esc(t)}</li>`)).join('')}</ul>`:'<p class="mu">No component changes. Rebuilt on the daily schedule.</p>'}</details>`}).join(''):'<p class="mu">No builds yet.</p>'}
+<h2>Verify</h2><p class="lead" style="margin-bottom:12px">Every image is signed by the build workflow and carries an SPDX SBOM and a vulnerability report as attestations.</p>
+<pre class="cmd" style="margin-bottom:10px">cosign verify ${esc(ref)} \\\n  ${esc(flags)}</pre><pre class="cmd">cosign verify-attestation --type spdxjson ${esc(ref)} \\\n  ${esc(flags)}</pre>`;
+document.getElementById('ln').onchange=e=>{line=e.target.value;img(name)};
+document.getElementById('cp').onclick=async e=>{try{await navigator.clipboard.writeText(document.getElementById('pc').textContent);e.target.textContent='Copied'}catch(_){e.target.textContent='Select and copy'}}}
+const route=()=>{const h=location.hash.slice(1);h?img(h):home();scrollTo(0,0)};addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>

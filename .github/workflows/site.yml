@@ -1,0 +1,61 @@
+name: site
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", "images/*/image.yaml", "scripts/merge_data.py"]
+  workflow_dispatch:
+  workflow_call:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions: { contents: write, pages: write, id-token: write }
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - name: Attach the data branch (build history lives there)
+        run: |
+          if git fetch origin data 2>/dev/null; then
+            git worktree add -B data data origin/data
+          else
+            git worktree add --detach data
+            git -C data checkout --orphan data
+            git -C data rm -rf . -q
+          fi
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with: { pattern: "record-*", path: records, merge-multiple: true }
+
+      - run: pip install pyyaml
+
+      - name: Merge new build records and push the data branch
+        run: |
+          if ls records/*.json >/dev/null 2>&1; then
+            python scripts/merge_data.py records data
+            cd data
+            git add -A
+            if ! git diff --cached --quiet; then
+              git -c user.name=github-actions -c user.email=actions@github.com commit -qm "data: builds $(date -u +%F)"
+              git push origin data
+            fi
+          fi
+
+      - name: Generate site
+        run: python site/generate.py --data data --out dist --registry "ghcr.io/${GITHUB_REPOSITORY_OWNER,,}"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: dist }
+      - id: deployment
+        uses: actions/deploy-pages@v4
