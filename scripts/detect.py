@@ -118,7 +118,7 @@ def main():
                     reasons.append("new fixable vulns: " + ", ".join(sorted(new)[:10]))
             report.append(f"| {name} | {lid} | {version} | {'; '.join(reasons) or 'no change, skipped'} |")
             if reasons:
-                args = {**{k: " ".join(v.format(**ctx).split()) for k, v in meta.get("build_args", {}).items()}, **pins}
+                args = {**{k: " ".join(v.format(**ctx).split()).replace(", ", ",") for k, v in meta.get("build_args", {}).items()}, **pins}
                 include.append({
                     "image": name, "context": os.path.dirname(path), "id": lid, "version": version,
                     "build_args": "\n".join(f"{k}={v}" for k, v in args.items()),
