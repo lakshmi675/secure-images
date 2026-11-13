@@ -1,0 +1,34 @@
+[
+ {
+  "image": "tomcat",
+  "line": "9.0",
+  "version": "9.0.123",
+  "tag": "9.0.123-202611130513",
+  "digest": "sha256:37cc7b3c1b54f10023cbd45a3f0c19d3823aa3f9d30607167fb6c01e9560316f",
+  "built_at": "2026-11-13T05:18:45Z",
+  "reasons": [
+   "first build"
+  ],
+  "size_mb": 68.8,
+  "packages": 61,
+  "vulns": {
+   "critical": 3,
+   "high": 29,
+   "medium": 61,
+   "low": 26,
+   "fixable": 54
+  },
+  "baseline": {
+   "ref": "tomcat:9.0.123-jdk17-temurin",
+   "size_mb": 229.0,
+   "vulns": {
+    "critical": 0,
+    "high": 0,
+    "medium": 19,
+    "low": 3,
+    "fixable": 1
+   }
+  },
+  "changes": null
+ }
+]
