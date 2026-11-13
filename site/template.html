@@ -86,7 +86,7 @@ A.innerHTML=`<p style="margin:28px 0 0"><a href="#" class="mu">All images</a></p
 <h2>Run it</h2><pre class="cmd" style="margin-bottom:14px">${esc((i.quickstart||'').replace('{ref}',ref))}</pre><ul>${(i.notes||[]).map(n=>`<li>${code(n)}</li>`).join('')}</ul>
 <div class="tw"><table>${Object.entries(i.runtime||{}).map(([k,x])=>`<tr><th>${R[k]||esc(k)}</th><td>${esc(x)}</td></tr>`).join('')}</table></div>
 <h2>Versions</h2><div class="tw"><table><tr><th>Line</th><th>Version</th><th>Runtime</th><th>Built</th><th>Digest</th></tr>${i.lines.map(l=>{const x=l.builds[0];return`<tr><td>${esc(l.id)}</td><td>${x?esc(x.version):'-'}</td><td>${esc(l.runtime)}</td><td>${x?ago(x.built_at):'-'}</td><td><code>${x?esc(x.digest.slice(0,19)):'-'}</code></td></tr>`}).join('')}</table></div>
-<h2>Security</h2>${v?`<p class="lead" style="margin-bottom:14px">Unique CVE IDs found by Trivy at build time for ${esc(i.name)} ${esc(line)}. ${v.fixable?v.fixable+' have a fix available upstream and will trigger a rebuild.':'None have a fix available, so there is nothing to patch yet.'}</p>
+<h2>Security</h2>${v?`<p class="lead" style="margin-bottom:14px">Unique CVE IDs found by Trivy at build time for ${esc(i.name)} ${esc(line)}. ${v.fixable?v.fixable+' have a fix available upstream.':'None have a fix available, so there is nothing to patch yet.'}</p>
 <div class="key"><span style="color:var(--ok)">■ this image</span>${bl?`<span style="color:var(--wn)">■ ${esc(bl.ref)}</span>`:''}</div>
 ${SEV.map(s=>bar(s,v[s],0)+(bl&&bl.vulns?bar(s,bl.vulns[s],1):'')).join('<div style="height:8px"></div>')}
 <p class="mu" style="margin-top:14px">${b.size_mb} MB${bl?` vs ${bl.size_mb} MB`:''} · ${b.packages} components in the SBOM</p>`:'<p class="mu">Scan results appear after the first build.</p>'}

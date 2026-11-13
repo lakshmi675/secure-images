@@ -13,7 +13,7 @@ upstream: { type: maven, group: org.apache.tomcat, artifact: tomcat }
 platforms: linux/amd64,linux/arm64
 # Inputs pinned by digest on every run. A digest change triggers a rebuild.
 pins:
-  BASE_IMAGE: gcr.io/distroless/java-base-debian12:nonroot
+  BASE_IMAGE: gcr.io/distroless/java-base-debian13:nonroot
   JDK_IMAGE: eclipse-temurin:{jdk}-jdk          # jlink source only
 build_args:
   TOMCAT_VERSION: "{version}"
