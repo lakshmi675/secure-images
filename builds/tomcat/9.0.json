@@ -2,6 +2,71 @@
  {
   "image": "tomcat",
   "line": "9.0",
+  "version": "9.0.124",
+  "tag": "9.0.124-202611140739",
+  "digest": "sha256:fc1d6b2378f5cedd7bc3dba52855697ff454422b384a058cdbe20f5951bea79d",
+  "built_at": "2026-11-14T07:43:13Z",
+  "reasons": [
+   "new upstream release 9.0.123 -> 9.0.124"
+  ],
+  "size_mb": 65.1,
+  "packages": 61,
+  "vulns": {
+   "critical": 0,
+   "high": 8,
+   "medium": 23,
+   "low": 13,
+   "fixable": 0
+  },
+  "baseline": {
+   "ref": "tomcat:9.0.124-jdk17-temurin",
+   "size_mb": 242.0,
+   "vulns": {
+    "critical": 0,
+    "high": 0,
+    "medium": 20,
+    "low": 3,
+    "fixable": 1
+   }
+  },
+  "changes": {
+   "added": [],
+   "removed": [],
+   "updated": [
+    "bootstrap 9.0.123 -> 9.0.124",
+    "catalina 9.0.123 -> 9.0.124",
+    "catalina-ant 9.0.123 -> 9.0.124",
+    "catalina-ha 9.0.123 -> 9.0.124",
+    "catalina-ssi 9.0.123 -> 9.0.124",
+    "catalina-storeconfig 9.0.123 -> 9.0.124",
+    "catalina-tribes 9.0.123 -> 9.0.124",
+    "jasper 9.0.123 -> 9.0.124",
+    "jasper-el 9.0.123 -> 9.0.124",
+    "tomcat-api 9.0.123 -> 9.0.124",
+    "tomcat-coyote 9.0.123 -> 9.0.124",
+    "tomcat-coyote-ffm 9.0.123 -> 9.0.124",
+    "tomcat-dbcp 9.0.123 -> 9.0.124",
+    "tomcat-i18n-cs 9.0.123 -> 9.0.124",
+    "tomcat-i18n-de 9.0.123 -> 9.0.124",
+    "tomcat-i18n-es 9.0.123 -> 9.0.124",
+    "tomcat-i18n-fr 9.0.123 -> 9.0.124",
+    "tomcat-i18n-ja 9.0.123 -> 9.0.124",
+    "tomcat-i18n-ko 9.0.123 -> 9.0.124",
+    "tomcat-i18n-pt-BR 9.0.123 -> 9.0.124",
+    "tomcat-i18n-ru 9.0.123 -> 9.0.124",
+    "tomcat-i18n-zh-CN 9.0.123 -> 9.0.124",
+    "tomcat-jdbc 9.0.123 -> 9.0.124",
+    "tomcat-jni 9.0.123 -> 9.0.124",
+    "tomcat-juli 9.0.123 -> 9.0.124",
+    "tomcat-util 9.0.123 -> 9.0.124",
+    "tomcat-util-scan 9.0.123 -> 9.0.124",
+    "tomcat-websocket 9.0.123 -> 9.0.124"
+   ]
+  }
+ },
+ {
+  "image": "tomcat",
+  "line": "9.0",
   "version": "9.0.123",
   "tag": "9.0.123-202611130547",
   "digest": "sha256:383172c6dfa14978c52cb1ecccba139819fc3b6cf2eba2506af741b554f0e51a",

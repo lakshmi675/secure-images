@@ -2,6 +2,73 @@
  {
   "image": "tomcat",
   "line": "11.0",
+  "version": "11.0.29",
+  "tag": "11.0.29-202611140739",
+  "digest": "sha256:f0639bae1e5e7189f256aaa99887249d722e3916923772264efbb5baecaba87e",
+  "built_at": "2026-11-14T07:42:58Z",
+  "reasons": [
+   "new upstream release 11.0.27 -> 11.0.29"
+  ],
+  "size_mb": 71.9,
+  "packages": 63,
+  "vulns": {
+   "critical": 0,
+   "high": 8,
+   "medium": 23,
+   "low": 13,
+   "fixable": 0
+  },
+  "baseline": {
+   "ref": "tomcat:11.0.29-jdk21-temurin",
+   "size_mb": 254.9,
+   "vulns": {
+    "critical": 0,
+    "high": 0,
+    "medium": 20,
+    "low": 3,
+    "fixable": 1
+   }
+  },
+  "changes": {
+   "added": [],
+   "removed": [],
+   "updated": [
+    "bootstrap 11.0.27 -> 11.0.29",
+    "catalina 11.0.27 -> 11.0.29",
+    "catalina-ant 11.0.27 -> 11.0.29",
+    "catalina-ha 11.0.27 -> 11.0.29",
+    "catalina-ssi 11.0.27 -> 11.0.29",
+    "catalina-storeconfig 11.0.27 -> 11.0.29",
+    "catalina-tribes 11.0.27 -> 11.0.29",
+    "jasper 11.0.27 -> 11.0.29",
+    "jasper-el 11.0.27 -> 11.0.29",
+    "tomcat-api 11.0.27 -> 11.0.29",
+    "tomcat-coyote 11.0.27 -> 11.0.29",
+    "tomcat-coyote-ffm 11.0.27 -> 11.0.29",
+    "tomcat-dbcp 11.0.27 -> 11.0.29",
+    "tomcat-i18n-cs 11.0.27 -> 11.0.29",
+    "tomcat-i18n-de 11.0.27 -> 11.0.29",
+    "tomcat-i18n-es 11.0.27 -> 11.0.29",
+    "tomcat-i18n-fr 11.0.27 -> 11.0.29",
+    "tomcat-i18n-ja 11.0.27 -> 11.0.29",
+    "tomcat-i18n-ko 11.0.27 -> 11.0.29",
+    "tomcat-i18n-pt-BR 11.0.27 -> 11.0.29",
+    "tomcat-i18n-ru 11.0.27 -> 11.0.29",
+    "tomcat-i18n-zh-CN 11.0.27 -> 11.0.29",
+    "tomcat-jdbc 11.0.27 -> 11.0.29",
+    "tomcat-jni 11.0.27 -> 11.0.29",
+    "tomcat-juli 11.0.27 -> 11.0.29",
+    "tomcat-util 11.0.27 -> 11.0.29",
+    "tomcat-util-scan 11.0.27 -> 11.0.29",
+    "tomcat-websocket 11.0.27 -> 11.0.29",
+    "websocket-api 11.0.27 -> 11.0.29",
+    "websocket-client-api 11.0.27 -> 11.0.29"
+   ]
+  }
+ },
+ {
+  "image": "tomcat",
+  "line": "11.0",
   "version": "11.0.27",
   "tag": "11.0.27-202611130547",
   "digest": "sha256:fad4a3b722800a748e75ee5f3f53b472d29749d0635650db57741140eccb328d",
