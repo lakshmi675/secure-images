@@ -2,6 +2,74 @@
  {
   "image": "tomcat",
   "line": "10.1",
+  "version": "10.1.62",
+  "tag": "10.1.62-202611170916",
+  "digest": "sha256:cc1a223ba2439d8ad7eb3048bb644d62687f34045b46cc1268d96129d278f3b0",
+  "built_at": "2026-11-17T09:20:52Z",
+  "reasons": [
+   "new upstream release 10.1.61 -> 10.1.62",
+   "JDK_IMAGE updated"
+  ],
+  "size_mb": 71.8,
+  "packages": 63,
+  "vulns": {
+   "critical": 0,
+   "high": 8,
+   "medium": 24,
+   "low": 13,
+   "fixable": 0
+  },
+  "baseline": {
+   "ref": "tomcat:10.1.62-jdk21-temurin",
+   "size_mb": 254.9,
+   "vulns": {
+    "critical": 0,
+    "high": 0,
+    "medium": 20,
+    "low": 3,
+    "fixable": 1
+   }
+  },
+  "changes": {
+   "added": [],
+   "removed": [],
+   "updated": [
+    "bootstrap 10.1.61 -> 10.1.62",
+    "catalina 10.1.61 -> 10.1.62",
+    "catalina-ant 10.1.61 -> 10.1.62",
+    "catalina-ha 10.1.61 -> 10.1.62",
+    "catalina-ssi 10.1.61 -> 10.1.62",
+    "catalina-storeconfig 10.1.61 -> 10.1.62",
+    "catalina-tribes 10.1.61 -> 10.1.62",
+    "jasper 10.1.61 -> 10.1.62",
+    "jasper-el 10.1.61 -> 10.1.62",
+    "tomcat-api 10.1.61 -> 10.1.62",
+    "tomcat-coyote 10.1.61 -> 10.1.62",
+    "tomcat-coyote-ffm 10.1.61 -> 10.1.62",
+    "tomcat-dbcp 10.1.61 -> 10.1.62",
+    "tomcat-i18n-cs 10.1.61 -> 10.1.62",
+    "tomcat-i18n-de 10.1.61 -> 10.1.62",
+    "tomcat-i18n-es 10.1.61 -> 10.1.62",
+    "tomcat-i18n-fr 10.1.61 -> 10.1.62",
+    "tomcat-i18n-ja 10.1.61 -> 10.1.62",
+    "tomcat-i18n-ko 10.1.61 -> 10.1.62",
+    "tomcat-i18n-pt-BR 10.1.61 -> 10.1.62",
+    "tomcat-i18n-ru 10.1.61 -> 10.1.62",
+    "tomcat-i18n-zh-CN 10.1.61 -> 10.1.62",
+    "tomcat-jdbc 10.1.61 -> 10.1.62",
+    "tomcat-jni 10.1.61 -> 10.1.62",
+    "tomcat-juli 10.1.61 -> 10.1.62",
+    "tomcat-util 10.1.61 -> 10.1.62",
+    "tomcat-util-scan 10.1.61 -> 10.1.62",
+    "tomcat-websocket 10.1.61 -> 10.1.62",
+    "websocket-api 10.1.61 -> 10.1.62",
+    "websocket-client-api 10.1.61 -> 10.1.62"
+   ]
+  }
+ },
+ {
+  "image": "tomcat",
+  "line": "10.1",
   "version": "10.1.61",
   "tag": "10.1.61-202611130547",
   "digest": "sha256:c92ee586f9f6db1f37d297a673a15907eb832d4e2e5a48dd43dc3c014a2d1c34",
