@@ -3,6 +3,45 @@
   "image": "tomcat",
   "line": "9.0",
   "version": "9.0.124",
+  "tag": "9.0.124-202611210820",
+  "digest": "sha256:04f6d53253f1e0b37df38198a02286b8d0c40ec91f45dbe8e9b9b7daa428ae64",
+  "built_at": "2026-11-21T08:24:20Z",
+  "reasons": [
+   "JDK_IMAGE updated"
+  ],
+  "size_mb": 65.1,
+  "packages": 61,
+  "vulns": {
+   "critical": 0,
+   "high": 8,
+   "medium": 25,
+   "low": 15,
+   "fixable": 0
+  },
+  "baseline": {
+   "ref": "tomcat:9.0.124-jdk17-temurin",
+   "size_mb": 235.5,
+   "vulns": {
+    "critical": 0,
+    "high": 0,
+    "medium": 30,
+    "low": 5,
+    "fixable": 1
+   }
+  },
+  "changes": {
+   "added": [],
+   "removed": [],
+   "updated": [
+    "jrt-fs 17.0.21 -> 17.0.21.1",
+    "openjdk 17.0.21 -> 17.0.21.1"
+   ]
+  }
+ },
+ {
+  "image": "tomcat",
+  "line": "9.0",
+  "version": "9.0.124",
   "tag": "9.0.124-202611170916",
   "digest": "sha256:91b9226306393684c96592dc7398975a82bc16dc9c5711ba5f5bd00ebb0fa84d",
   "built_at": "2026-11-17T09:21:38Z",
